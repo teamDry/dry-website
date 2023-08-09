@@ -3,11 +3,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.dry.mapper.MemberMapper">
-    <select id="selectMemberByIdAndPassword" parameterType="org.dry.mapper.MemberIdAndPassword" resultType="org.dry.entity.Member">
+    <!--    SELECT    -->
+    <select id="selectMemberByIdAndPassword" parameterType="org.dry.vo.MemberIdAndPassword" resultType="org.dry.entity.Member">
         SELECT * FROM member WHERE id = #{id} AND password = #{password}
     </select>
 
+    <select id="count" resultType="Integer">
+        SELECT COUNT(*) FROM member;
+    </select>
+
+    <!--    INSERT    -->
     <insert id="insertMember" parameterType="Member">
-        insert into member (id, password, nickname, email, last_entered_at, created_at) values (#{id}, #{password}, #{nickname}, #{email}, null, '2022-12-03 14:02:08');
+        INSERT INTO member (id, password, nickname, email, last_entered_at, created_at)
+        VALUES (#{id}, #{password}, #{nickname}, #{email}, null, '2022-12-03 14:02:08');
     </insert>
+
+    <!--    UPDATE    -->
+
+
+    <!--    DELETE    -->
+    <delete id="deleteAll">
+        DELETE FROM member;
+    </delete>
 </mapper>
