@@ -23,7 +23,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto Increment
     private int member_no;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, unique = true, length = 45)
     private String id;
 
     @Setter
@@ -31,10 +31,10 @@ public class Member {
     private String password;
 
     @Setter
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, unique = true, length = 255)
     private String nickname;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, unique = true, length = 255)
     private String email;
 
     @Setter
