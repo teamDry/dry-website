@@ -60,7 +60,7 @@ class MemberMapperTest {
     @Test
     void givenTestData_whenCounting_thenWorksFine() {
         // given
-        memberMapper.insertMember(TestUtil.getDummyData());
+        memberMapper.insertMember(TestUtil.getDummyMember());
         // when
         int count = memberMapper.count();
         // then
