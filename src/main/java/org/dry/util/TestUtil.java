@@ -1,5 +1,6 @@
 package org.dry.util;
 
+import org.dry.entity.Admin;
 import org.dry.entity.Member;
 
 /**
@@ -10,6 +11,16 @@ import org.dry.entity.Member;
 
 public class TestUtil {
     public static Member getDummyMember() {
+    /**
+     * testId, testPassword, testNick, test@naver.com
+     */
         return Member.of("testId", "testPassword", "testNick", "test@naver.com");
+    }
+
+    /**
+     * testAdmin, testAdminPw, testAdminNick, admin@naver.com
+     */
+    public static Admin getDummyAdmin() {
+        return Admin.of("testAdmin", "testAdminPw", "testAdminNick", "admin@naver.com");
     }
 }
