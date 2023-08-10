@@ -1,7 +1,7 @@
 package org.dry.mapper;
 
 import org.dry.entity.Admin;
-import org.dry.vo.MemberIdAndPassword;
+import org.dry.vo.IdAndPassword;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
@@ -26,7 +26,7 @@ class AdminMapperTest {
     @Test
     void givenIdAndPassword_whenSelectByIdAndPassword_thenWorksFine() {
         // given
-        MemberIdAndPassword idAndPassword = new MemberIdAndPassword("abc", "1234");
+        IdAndPassword idAndPassword = new IdAndPassword("abc", "1234");
         // when
         Admin admin = adminMapper.selectByIdAndPassword(idAndPassword);
         // then

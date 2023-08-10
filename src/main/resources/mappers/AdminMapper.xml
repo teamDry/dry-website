@@ -4,7 +4,7 @@
 
 <mapper namespace="org.dry.mapper.AdminMapper">
     <!--    SELECT    -->
-    <select id="selectByIdAndPassword" parameterType="org.dry.vo.MemberIdAndPassword" resultType="org.dry.entity.Admin">
+    <select id="selectByIdAndPassword" parameterType="org.dry.vo.IdAndPassword" resultType="org.dry.entity.Admin">
         SELECT * FROM admin WHERE id = #{id} AND password = #{password}
     </select>
 
