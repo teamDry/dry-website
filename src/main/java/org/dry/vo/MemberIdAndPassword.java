@@ -1,4 +1,4 @@
-package org.dry.mapper;
+package org.dry.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
