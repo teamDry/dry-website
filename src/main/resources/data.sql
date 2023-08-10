@@ -8,3 +8,14 @@ insert into member (id, password, nickname, email, last_entered_at, created_at) 
 insert into member (id, password, nickname, email, last_entered_at, created_at) values ('Langsdon Winterson', '#8f1ce0', 'Winterson', 'lwinterson7@skype.com', '2022-11-19 16:57:06', '2023-06-19 11:44:33');
 insert into member (id, password, nickname, email, last_entered_at, created_at) values ('Benedicta Jouning', '#9727dc', 'Jouning', 'bjouning8@sitemeter.com', null, '2023-04-16 13:11:47');
 insert into member (id, password, nickname, email, last_entered_at, created_at) values ('Nada Hellin', '#4c285d', 'Hellin', 'nhellin9@amazon.de', '2022-12-31 20:45:28', '2023-07-08 06:37:45');
+
+insert into admin (id, password, nickname, email, created_at, last_entered_at) values ('CYAZ', '#054', 'Subaru', 'eboom0@eventbrite.com', '2023-07-25 03:17:17', '2022-09-07 09:36:42');
+insert into admin (id, password, nickname, email, created_at, last_entered_at) values ('SBSP', '#92d', 'Volvo', 'relston1@prnewswire.com', '2023-04-03 22:06:12', '2023-07-05 12:18:54');
+insert into admin (id, password, nickname, email, created_at, last_entered_at) values ('OPSN', '#01b', 'Subaru', 'cpurkiss2@ifeng.com', '2022-10-12 14:50:54', '2022-10-13 20:08:11');
+insert into admin (id, password, nickname, email, created_at, last_entered_at) values ('LFOB', '#78a', 'Alfa Romeo', 'ldoerren3@g.co', '2022-08-26 18:13:05', null);
+insert into admin (id, password, nickname, email, created_at, last_entered_at) values ('PASN', '#fbe', 'Honda', 'ldinjes4@yellowbook.com', '2022-08-20 22:26:57', '2023-06-27 23:35:30');
+insert into admin (id, password, nickname, email, created_at, last_entered_at) values ('KSBP', '#f49', 'Toyota', 'ebuckberry5@reference.com', '2023-06-18 05:55:05', null);
+insert into admin (id, password, nickname, email, created_at, last_entered_at) values ('YLTN', '#764', 'Suzuki', 'asutlieff6@netscape.com', '2023-02-17 00:24:32', null);
+insert into admin (id, password, nickname, email, created_at, last_entered_at) values ('KECS', '#b3d', 'Volkswagen', 'jjessen7@weibo.com', '2023-07-22 20:18:14', '2023-05-02 03:37:33');
+insert into admin (id, password, nickname, email, created_at, last_entered_at) values ('MKBS', '#1be', 'Mercedes-Benz', 'ayuill8@nasa.gov', '2023-06-19 00:18:08', null);
+insert into admin (id, password, nickname, email, created_at, last_entered_at) values ('KCLE', '#6ae', 'Pontiac', 'sburges9@webmd.com', '2022-12-15 06:36:26', '2023-03-24 01:07:40');
