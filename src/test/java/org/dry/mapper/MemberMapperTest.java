@@ -2,7 +2,7 @@ package org.dry.mapper;
 
 import org.dry.entity.Member;
 import org.dry.util.TestUtil;
-import org.dry.vo.MemberIdAndPassword;
+import org.dry.vo.IdAndPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -47,7 +47,7 @@ class MemberMapperTest {
         memberMapper.insertMember(Member.of(memberId, memberPassword, "testNick", "test@email.com"));
 
         // memberId와 memberPassword를 합친 V.O 객체 생성
-        MemberIdAndPassword memberIdAndPassword = new MemberIdAndPassword(memberId, memberPassword);
+        IdAndPassword memberIdAndPassword = new IdAndPassword(memberId, memberPassword);
         // when
         // selectmemberByIdAndPassword와 매핑된 쿼리 실행, return : Member
         Member findMember = memberMapper.selectMemberByIdAndPassword(memberIdAndPassword);
