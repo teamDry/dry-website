@@ -1,10 +1,10 @@
 package org.dry.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.Objects;
+
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -12,4 +12,16 @@ import lombok.Setter;
 public class IdAndPassword {
     private String id;
     private String password;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof IdAndPassword that)) return false;
+        return Objects.equals(id, that.id) && Objects.equals(password, that.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, password);
+    }
 }
