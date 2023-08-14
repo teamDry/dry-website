@@ -7,4 +7,7 @@ import org.dry.vo.IdAndPassword;
 @Mapper
 public interface AdminMapper {
     Admin selectByIdAndPassword(IdAndPassword idAndPassword);
+    Admin selectByNickname(String nickname);
+    Admin selectById(String id);
+    Admin selectByEmail(String email);
 }
