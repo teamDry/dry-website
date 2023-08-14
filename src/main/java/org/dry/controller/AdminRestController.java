@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RequestMapping("/api/admin")
 @RestController
 public class AdminRestController {
     private final AdminService adminService;
-
     @Autowired
     public AdminRestController(AdminService adminService) {
         this.adminService = adminService;
@@ -31,4 +34,48 @@ public class AdminRestController {
         }
     }
 
+    @PostMapping("/sign-up")
+    public ResponseEntity<Admin> signUp(@RequestBody Admin admin) {
+        Admin signUpAdmin = adminService.signUp(admin);
+        if(signUpAdmin != null) {
+            return ResponseEntity.ok(signUpAdmin);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
+
+    // id 중복 검사
+    @GetMapping("/sign-up/check-id")
+    public ResponseEntity<Boolean> checkId(@RequestParam String id) {
+        boolean isTaken = adminService.isIdTaken(id);
+        if(!isTaken) {
+            return ResponseEntity.ok(isTaken);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    // 닉네임 중복 검사
+    @GetMapping("/sign-up/check-nickname")
+    public ResponseEntity<Boolean> checkNickname(@RequestParam String nickname) {
+        boolean isTaken = adminService.isNicknameTaken(nickname);
+        if(!isTaken) {
+            return ResponseEntity.ok(isTaken);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    // 이메일 중복 검사
+    @GetMapping("/sign-up/check-email")
+    public ResponseEntity<Boolean> checkEmail(@RequestParam String email) {
+        boolean isTaken = adminService.isEmailTaken(email);
+        if(!isTaken) {
+            return ResponseEntity.ok(isTaken);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
 }
+
+

@@ -32,4 +32,37 @@ class AdminMapperTest {
         // then
         assertThat(admin).isNotNull().hasFieldOrPropertyWithValue("id", "abc");
     }
+
+    @DisplayName("[Select] By Id")
+    @Test
+    void givenId_whenSelectById_thenAdminIsNotNull() {
+        // given
+        String id = "abc";
+        // when
+        Admin admin = adminMapper.selectById(id);
+        // then
+        assertThat(admin).isNotNull();
+    }
+
+    @DisplayName("[Select] By Nickname")
+    @Test
+    void givenNickname_whenSelectByNickname_thenAdminIsNotNull() {
+        // given
+        String nickname = "woo";
+        // when
+        Admin admin = adminMapper.selectByNickname(nickname);
+        // then
+        assertThat(admin).isNotNull();
+    }
+
+    @DisplayName("[Select] By Email")
+    @Test
+    void givenEmail_whenSelectByEmail_thenAdminIsNotNull() {
+        // given
+        String email = "abc@naver.com";
+        // when
+        Admin admin = adminMapper.selectByEmail(email);
+        // then
+        assertThat(admin).isNotNull();
+    }
 }
