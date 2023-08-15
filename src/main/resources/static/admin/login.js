@@ -1,6 +1,14 @@
 // 아이디 저장 checkbox
 const saveId = document.getElementById("saveId");
 
+if(localStorage.getItem("id") != null) {
+    // 저장된 아이디가 있다면 아이디 저장 체크 O
+    saveId.checked = true;
+} else {
+    // 저장된 아이디가 없다면 아이디 저장 체크 X
+    saveId.checked = false;
+}
+
 // localStorage에 자동 저장 id가 있다면 id 입력칸에 기본값 설정
 let adminId = localStorage.getItem("id");
 

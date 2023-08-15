@@ -100,8 +100,10 @@ function passwordCheckEvent() {
         return;
     } else if(password.value.trim().length <= 7) {
         isPasswordOk = false; // 비밀번호 길이가 7글자 이하면 안됨
-    } else {
+    } else if(password.value.trim() == passwordCheck.value.trim()) {
         isPasswordOk = true;
+    } else {
+        isPasswordOk = false;
     }
     changeBackgroundColor(passwordCheck, isPasswordOk); // 되는 값인지 안되는 값인지 표시
 }
@@ -164,9 +166,11 @@ function isValidEmail(email) {
 // TODO : 추후 수정 예정
 function changeBackgroundColor(component, isOk) {
     if(isOk) {
-        component.style.backgroundColor = "green";
+        component.style.backgroundColor = "black";
+        component.style.color = "white";
     } else {
         component.style.backgroundColor = "red";
+        component.style.color = "black";
     }
 }
 
