@@ -31,4 +31,16 @@ class AdminViewControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("admin/login"));
     }
+
+    @DisplayName("[view] [GET] 로그인 화면 - 정상 호출?")
+    @Test
+    void givenNothing_whenRequestSignUpView_thenReturnsSignUpView() throws Exception {
+        // given
+
+        // when & then
+        mvc.perform(get("/admin/sign-up"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                .andExpect(view().name("admin/sign-up"));
+    }
 }

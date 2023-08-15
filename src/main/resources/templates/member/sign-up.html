@@ -4,39 +4,69 @@
         <meta charset="UTF-8">
         <title>회원가입</title>
         <script>
-            window.onload = function() {
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("btnSignUp").addEventListener("click", signUp);
+            });
 
+            function signUp() {
+                let data = {
+                    id: document.querySelector('input[name="id"]').value,
+                    password: document.querySelector('input[name="password"]').value,
+                    nickname: document.querySelector('input[name="nickname"]').value,
+                    email: document.querySelector('input[name="email"]').value
+                };
+
+                if(data.id.length == 0 || data.password.length == 0 || data.nickname.length == 0 || data.email.length == 0) {
+                    alert("회원 정보를 모두 입력해 주세요.");
+                }else {
+                    let xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/member/sign-up", true);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.send(JSON.stringify(data));
+
+                    xhr.onload = () => {
+                        if(xhr.readyState == xhr.DONE) {
+                            if(xhr.Status == 200) {
+                                const resultData = xhr.response;
+                                const jsonData = JSON.parse(resultData);
+                                if(Object.keys(jsonData).length !== 0) {
+                                    alert("Sign Up Success");
+                                }else{
+                                    alert("등록안됨");
+                                }
+                            }
+                        }
+                    }
+                }
             }
         </script>
     </head>
     <body>
         <header></header>
         <main>
-            <form th:action="@{/member/sign-up}" method="post">
-                <table border="1">
-                    <tr>
-                        <td>아이디</td>
-                        <td><input type="text" name="id"></td>
-                    </tr>
-                    <tr>
-                        <td>비밀번호</td>
-                        <td><input type="text" name="password"></td>
-                    </tr>
-                    <tr>
-                        <td>닉네임</td>
-                        <td><input type="text" name="nickname"></td>
-                    </tr>
-                    <tr>
-                        <td>email</td>
-                        <td><input type="text" name="email"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="right">
-                            <input type="submit" value="가입하기">
-                        </td>
-                    </tr>
-                </table>
-            </form>
+            <table border="1">
+                <tr>
+                    <td>아이디</td>
+                    <td><input type="text" name="id"></td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type="text" name="password"></td>
+                </tr>
+                <tr>
+                    <td>닉네임</td>
+                    <td><input type="text" name="nickname"></td>
+                </tr>
+                <tr>
+                    <td>email</td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">
+                        <input id="btnSignUp" type="submit" value="가입하기">
+                    </td>
+                </tr>
+            </table>
         </main>
         <footer></footer>
     </body>

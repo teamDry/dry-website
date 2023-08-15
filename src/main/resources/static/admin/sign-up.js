@@ -169,8 +169,8 @@ function changeBackgroundColor(component, isOk) {
         component.style.backgroundColor = "black";
         component.style.color = "white";
     } else {
-        component.style.color = "black";
         component.style.backgroundColor = "red";
+        component.style.color = "black";
     }
 }
 

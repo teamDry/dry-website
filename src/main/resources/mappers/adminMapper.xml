@@ -8,6 +8,20 @@
         SELECT * FROM admin WHERE id = #{id} AND password = #{password}
     </select>
 
+    <!-- 중복 검사용 쿼리   -->
+    <select id="selectById" parameterType="String" resultType="org.dry.entity.Admin">
+        SELECT * FROM admin WHERE id = #{id}
+    </select>
+
+    <select id="selectByNickname" parameterType="String" resultType="org.dry.entity.Admin">
+        SELECT * FROM admin WHERE nickname = #{nickname}
+    </select>
+
+    <select id="selectByEmail" parameterType="String" resultType="org.dry.entity.Admin">
+        SELECT * FROM admin WHERE email = #{email}
+    </select>
+
+
     <!--    INSERT    -->
 
     <!--    UPDATE    -->
