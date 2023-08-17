@@ -29,3 +29,15 @@ spring:
     rest:
       base-path: /api
       detection-strategy: annotated
+  # Gmail SMTP Server Setting
+  mail:
+    host: smtp.gmail.com # The server's host when you send mail
+    port: 587 # port number, In general 587
+    username: dryemailsequ@gmail.com # your Gmail address
+    password: dry3306! # your address's password
+    properties:
+      mail:
+        smtp:
+          auth: true # Are you use security in SMTP server?
+          starttls.enable: true # Are you use STARTTLS security connection?
+          # starttls : The Encryption protocol for security communication
