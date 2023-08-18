@@ -13,7 +13,7 @@ mybatis:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/drytable
+    url: jdbc:mysql://localhost:3306/dryTable
     username: "un"
     password: "0000"
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -29,15 +29,17 @@ spring:
     rest:
       base-path: /api
       detection-strategy: annotated
+
   # Gmail SMTP Server Setting
   mail:
     host: smtp.gmail.com # The server's host when you send mail
     port: 587 # port number, In general 587
-    username: dryemailsequ@gmail.com # your Gmail address
-    password: dry3306! # your address's password
+    username:  # your Gmail address
+    password:     # your address's password
     properties:
       mail:
         smtp:
           auth: true # Are you use security in SMTP server?
-          starttls.enable: true # Are you use STARTTLS security connection?
+          starttls:
+            enable: true # Are you use STARTTLS security connection?
           # starttls : The Encryption protocol for security communication
