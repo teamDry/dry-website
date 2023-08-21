@@ -15,29 +15,23 @@ function dataSetting() {
 
 // 회원가입 버튼 눌렸을때 ajax 처리
 function performSignUp() {
-    if(!isIdOk) {
-        return;
-    }
-    if(!isPasswordOk) {
-        return;
-    }
-    if(!isNicknameOk) {
+    if(!isIdOk && !isPasswordOk && !isNicknameOk && !isEmailOk) {
         return;
     }
 
-    if(!isEmailOk) {
-        return;
-    }
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
 
+    const code = urlParams.get('code'); // 'John'
 
     const admin = {
         id: document.getElementById("adminId").value,
         password: document.getElementById("adminPassword").value,
         nickname: document.getElementById("adminNickname").value,
         email: document.getElementById("adminEmail").value
-    }
+    };
 
-    fetch("/api/admin/sign-up", {
+    fetch("/api/admins/sign-up", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -54,7 +48,7 @@ function performSignUp() {
         .then(data => {
             // 회원가입한 id를 login id칸에 설정
             localStorage.setItem("id", data.id);
-            window.location.href="/admin/login";
+            window.location.href="/admins/login/code?code=" + code;
         })
         .catch(error => {
             console.log(error);
@@ -63,7 +57,7 @@ function performSignUp() {
 
 // 회원가입 취소 버튼 눌렸을 때
 function clickCancelButton() {
-    window.location.href="/admin/login";
+    window.location.href="/admins/login";
 }
 
 // ID 중복 검사
@@ -76,7 +70,7 @@ function idCheckEvent() {
         return;
     }
 
-    fetch(`/api/admin/sign-up/check-id?id=${idElement.value}`, {
+    fetch(`/api/admins/id/check?id=${idElement.value}`, {
         method: "GET",
         cache: "no-cache"
     })
@@ -119,7 +113,7 @@ function nicknameCheckEvent() {
         return; // fetch 실행 X
     }
 
-    fetch(`/api/admin/sign-up/check-nickname?nickname=${nicknameElement.value}`, {
+    fetch(`/api/admins/nickname/check?nickname=${nicknameElement.value}`, {
         method: "GET",
         cache: "no-cache"
     })
@@ -144,7 +138,7 @@ function emailCheckEvent() {
         return; // fetch 실행 X
     }
 
-    fetch(`/api/admin/sign-up/check-email?email=${emailElement.value}`, {
+    fetch(`/api/admins/email/check?email=${emailElement.value}`, {
         method: "GET",
         cache: "no-cache"
     })

@@ -22,7 +22,7 @@ function performLogin() {
         password: document.getElementById("password").value
     };
 
-    fetch("/api/admin/login", { // client > Server로 요청 보내기
+    fetch("/api/admins/login", { // client > Server로 요청 보내기
         method: "POST", // POST 방식으로
         headers: {
             "Content-Type": "application/json" // Json 타입으로 컨텐트를 보낼겁니다
@@ -42,13 +42,13 @@ function performLogin() {
             } else { // 체크 안하고 로그인?
                 localStorage.removeItem("id"); // 저장된 아이디 삭제
             }
-            window.location.href="/admin/loginSuccess"; // view단으로 GET 요청을 보내 서버 랜더링
+            window.location.href="/admins/loginSuccess"; // view단으로 GET 요청을 보내 서버 랜더링
         })
         .catch(error => {
-            window.location.href="/admin/loginFail";
+            window.location.href="/admins/loginFail";
     });
 }
 
 function clickSignUp() { // 회원가입 버튼 눌렸을 때
-    window.location.href="/admin/sign-up";
+    window.location.href="/admins/sign-up";
 }
