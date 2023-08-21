@@ -1,10 +1,9 @@
 package org.dry.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.persistence.Id;
 import org.dry.entity.Admin;
 import org.dry.service.AdminService;
+import org.dry.service.EmailServiceImpl;
 import org.dry.util.TestUtil;
 import org.dry.vo.IdAndPassword;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -53,12 +51,21 @@ class AdminRestControllerTest {
         // RestController에 넘어갈 json data
         String jsonData = objectMapper.writeValueAsString(new IdAndPassword("abc", "1234"));
         // when & then
-        mvc.perform(post("/api/admin/login")
+        mvc.perform(post("/api/admins/login")
                 .contentType(MediaType.APPLICATION_JSON) // JSON 형식으로 보낼거고
                 .content(jsonData)) // 보내는 JSON 객체는 이거임
                 .andExpect(status().isOk()) // 응답코드가 OK(200)이냐?
                 .andExpect(jsonPath("$.id").value("abc")) // 받은 json의 id 값이 abc인가?
                 .andExpect(jsonPath("$.password").value("1234")); // 받은 json의 password 값이 "1234" 인가?
+    }
+
+    @DisplayName("[rest] [get] given - Email / request - sendMail / response - ok?")
+    @Test
+    void givenEmail_whenInviteAdmin_thenWorksFine() {
+        // Given
+        String email = "mapzine123@naver.com";
+        // When
+        // Then
     }
 
     @DisplayName("[rest] [post] given -AdminObject / request - Sign-up / response - id?")
@@ -68,7 +75,7 @@ class AdminRestControllerTest {
         when(adminService.signUp(any(Admin.class))).thenReturn(TestUtil.getDummyAdmin());
         String jsonData = objectMapper.writeValueAsString(TestUtil.getDummyAdmin());
         // when & then
-        mvc.perform(post("/api/admin/sign-up")
+        mvc.perform(post("/api/admins/sign-up")
                 .contentType(MediaType.APPLICATION_JSON) // JSON 형식으로 보낼거고
                 .content(jsonData))
                 .andExpect(status().isOk())
@@ -84,7 +91,7 @@ class AdminRestControllerTest {
         when(adminService.isIdTaken(any(String.class))).thenReturn(false);
         String queryString = "id=testId1234";
         // when & then
-        mvc.perform(MockMvcRequestBuilders.get("/api/admin/sign-up/check-id?" + queryString))
+        mvc.perform(MockMvcRequestBuilders.get("/api/admins/id/check?" + queryString))
                 .andExpect(status().isOk());
     }
 
@@ -96,7 +103,7 @@ class AdminRestControllerTest {
         when(adminService.isIdTaken(any(String.class))).thenReturn(true);
         String queryString = "id=testId1234";
         // when & then
-        mvc.perform(MockMvcRequestBuilders.get("/api/admin/sign-up/check-id?" + queryString))
+        mvc.perform(MockMvcRequestBuilders.get("/api/admins/id/check?" + queryString))
                 .andExpect(status().isBadRequest());
     }
 
@@ -109,7 +116,7 @@ class AdminRestControllerTest {
         when(adminService.isNicknameTaken(any(String.class))).thenReturn(false);
         String queryString = "nickname=testNickname1234";
         // when & then
-        mvc.perform(MockMvcRequestBuilders.get("/api/admin/sign-up/check-nickname?" + queryString))
+        mvc.perform(MockMvcRequestBuilders.get("/api/admins/nickname/check?" + queryString))
                 .andExpect(status().isOk());
     }
 
@@ -121,7 +128,7 @@ class AdminRestControllerTest {
         when(adminService.isNicknameTaken(any(String.class))).thenReturn(true);
         String queryString = "nickname=testNickname1234";
         // when & then
-        mvc.perform(MockMvcRequestBuilders.get("/api/admin/sign-up/check-nickname?" + queryString))
+        mvc.perform(MockMvcRequestBuilders.get("/api/admins/nickname/check?" + queryString))
                 .andExpect(status().isBadRequest());
     }
 
@@ -134,7 +141,7 @@ class AdminRestControllerTest {
         when(adminService.isEmailTaken(any(String.class))).thenReturn(false);
         String queryString = "email=testEmail1234@naver.com";
         // when & then
-        mvc.perform(MockMvcRequestBuilders.get("/api/admin/sign-up/check-email?" + queryString))
+        mvc.perform(MockMvcRequestBuilders.get("/api/admins/email/check?" + queryString))
                 .andExpect(status().isOk());
     }
 
@@ -146,7 +153,7 @@ class AdminRestControllerTest {
         when(adminService.isEmailTaken(any(String.class))).thenReturn(true);
         String queryString = "email=testEmail1234@naver.com";
         // when & then
-        mvc.perform(MockMvcRequestBuilders.get("/api/admin/sign-up/check-email?" + queryString))
+        mvc.perform(MockMvcRequestBuilders.get("/api/admins/email/check?" + queryString))
                 .andExpect(status().isBadRequest());
     }
 }

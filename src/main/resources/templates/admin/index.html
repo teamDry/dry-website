@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인 성공 테스트 페이지</title>
+    <script defer src="/admin/index.js" type="text/javascript"></script>
 </head>
 <body>
     <p>환영합니다, <span th:text="${session.loginAdmin.nickname}"/>님</p>
-
+    <button onclick="sendMail()">이메일 보내보기</button>
 </body>
 </html>

@@ -13,9 +13,9 @@ mybatis:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/drytable
-    username: "un"
-    password: "0000"
+    url: ${db_url}
+    username: ${db_username}
+    password: ${db_password}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     defer-datasource-initialization: true
@@ -24,8 +24,22 @@ spring:
     properties:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
+      dialect: org.hibernate.dialect.MySQLDialect
   sql.init.mode: NEVER
   data:
     rest:
       base-path: /api
       detection-strategy: annotated
+  # Gmail SMTP Server Setting
+  mail:
+    host: smtp.gmail.com  # The server's host when you send mail
+    port: 587             # port number, In general 587
+    username: ${mail_username}       # your Gmail address
+    password: ${mail_password}                  # your address's password
+    properties:
+      mail:
+        smtp:
+          auth: true      # Are you use security in SMTP server?
+          starttls:
+            enable: true  # Are you use STARTTLS security connection?
+          # starttls : The Encryption protocol for security communication
