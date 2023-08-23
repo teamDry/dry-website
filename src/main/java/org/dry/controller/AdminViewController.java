@@ -1,5 +1,6 @@
 package org.dry.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.dry.service.InviteCodesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,11 @@ public class AdminViewController {
     @Autowired
     public AdminViewController(InviteCodesService inviteCodesService) {
         this.inviteCodesService = inviteCodesService;
+    }
+
+    @GetMapping("/")
+    public String home() {
+        return "admin/index";
     }
 
     @GetMapping("/login") // 로그인 view 화면
@@ -52,6 +58,13 @@ public class AdminViewController {
         } else {
             return "redirect:/admins/loginFail"; // 아니면 에러 페이지
         }
+    }
+
+    // 로그아웃 요청
+    @GetMapping("logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("loginAdmin"); // 세션값 삭제
+        return "redirect:/admins/"; // 다시 메인페이지 출력
     }
 
 }

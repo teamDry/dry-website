@@ -59,15 +59,6 @@ class AdminRestControllerTest {
                 .andExpect(jsonPath("$.password").value("1234")); // 받은 json의 password 값이 "1234" 인가?
     }
 
-    @DisplayName("[rest] [get] given - Email / request - sendMail / response - ok?")
-    @Test
-    void givenEmail_whenInviteAdmin_thenWorksFine() {
-        // Given
-        String email = "mapzine123@naver.com";
-        // When
-        // Then
-    }
-
     @DisplayName("[rest] [post] given -AdminObject / request - Sign-up / response - id?")
     @Test
     void givenAdminObject_whenRequestSignUp_thenResponseAdminId() throws Exception {
