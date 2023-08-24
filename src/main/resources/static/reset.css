@@ -46,3 +46,19 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+input[type="text"], input[type="password"], input[type="email"] {
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    appearance: none; /* 웹킷 브라우저의 스타일 기본값 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit; /* 부모 요소의 색상 상속 */
+}

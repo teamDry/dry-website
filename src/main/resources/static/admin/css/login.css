@@ -1,0 +1,176 @@
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+    overflow-y: hidden; /* 수직 스크롤 비활성화 */
+}
+
+.body-container {
+    width: 40%;
+    height: 100%;
+    margin: 0 auto;
+    background: linear-gradient(to right, #FAF0E6, #BEADFA);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10vh;
+}
+
+/* ------------ HEADER */
+header {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 64px;
+}
+
+header svg {
+    width: 256px;
+    height: 256px;
+}
+
+header span {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 64px;
+    background: linear-gradient(to top, #4D3C77, #040D12);
+    -webkit-background-clip: text; /* 텍스트 내부에만 그라데이션 적용 */
+    color: transparent; /* 텍스트 숨김 */
+    font-family: 'Black Ops One'
+}
+/* --------------------- MAIN     */
+main {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.input-box svg {
+    width: 36px;
+    height: 36px;
+}
+
+.input-box input {
+    width: 80%;
+    font-size: 36px;
+    border-bottom: 2px solid black;
+    margin-left: 16px;
+    margin-bottom: 36px;
+    padding-bottom: 6px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.input-form:focus {
+    border-bottom: 1px solid #ffffff;
+}
+
+.input-form::placeholder {
+    color: #252B48;
+    font-size: 24px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.main-option {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.option-box {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option-box input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    accent-color: #068FFF; /* 체크박스 색깔 변경*/
+    margin-right: 16px;
+}
+
+.option-box label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    font-size: 24px;
+}
+
+.option-box label:hover {
+    color: #ffffff;
+    transition: color 0.3s; /* 배경색 전환 효과 추가 */
+}
+
+.forgot-password {
+    margin-left: auto;
+    font-size: 24px;
+    font-family: 'Caveat', cursive;
+    color: #322653;
+    font-weight: bold;
+}
+
+.forgot-password:hover {
+    color: #FFF0F5;
+    transition: color 0.3s; /* 배경색 전환 효과 추가 */
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 60px;
+    background-color: #322653;
+    margin-top: 40px;
+    color: #ffffff;
+    font-size: 24px;
+    border-radius: 12px;
+    letter-spacing: 3px;
+}
+
+.button:hover {
+    background-color: #FFF0F5;
+    color: #000000;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.no-copy {
+    user-select: none; /* 텍스트 선택 비활성화 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.cancel-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 60px;
+    background-color: #322653;
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 24px;
+    border-radius: 12px;
+    letter-spacing: 3px;
+}

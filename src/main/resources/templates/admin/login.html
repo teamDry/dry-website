@@ -1,30 +1,67 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Admin Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 페이지</title>
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/admin/css/login.css">
     <script defer src="/admin/js/login.js" type="text/javascript"></script>
+
+    <!--FONT LINK-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<header>
-
-</header>
-
-<main>
-    <div class="formStyle">
-        <input type="text" id="id" name="id" placeholder="아이디를 입력하세요." />
-        <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요." />
-        <div>
-            <span>아이디 저장</span>
-            <input type="checkbox" id="saveId" name="saveId" />
+<div class="body-container">
+    <header>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+                    d="M10 11V8L15 12L10 16V13H1V11H10ZM2.4578 15H4.58152C5.76829 17.9318 8.64262 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C8.64262 4 5.76829 6.06817 4.58152 9H2.4578C3.73207 4.94289 7.52236 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C7.52236 22 3.73207 19.0571 2.4578 15Z">
+            </path>
+        </svg>
+        <span class="header-title no-copy"> ADMIN LOGIN </span>
+    </header>
+    <main>
+        <div class="main-input">
+            <div class="main-input-id input-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                            d="M11 14.0619V20H13V14.0619C16.9463 14.554 20 17.9204 20 22H4C4 17.9204 7.05369 14.554 11 14.0619ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13Z">
+                    </path>
+                </svg>
+                <input type="text" id="id" name="id" class="input-form" placeholder="ID" autocomplete="off"/>
+            </div>
+            <div class="main-input-password input-box">
+                <svg class="input-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                            d="M17 14H12.6586C11.8349 16.3304 9.61244 18 7 18C3.68629 18 1 15.3137 1 12C1 8.68629 3.68629 6 7 6C9.61244 6 11.8349 7.66962 12.6586 10H23V14H21V18H17V14ZM7 14C8.10457 14 9 13.1046 9 12C9 10.8954 8.10457 10 7 10C5.89543 10 5 10.8954 5 12C5 13.1046 5.89543 14 7 14Z">
+                    </path>
+                </svg>
+                <input type="password" id="password" class="input-form" name="password" placeholder="PASSWORD" />
+            </div>
         </div>
-        <button class="button" onclick="performLogin()">로그인</button>
-        <button class="sign-up-button" onclick="clickSignUp()">회원가입</button>
-    </div>
-</main>
+        <div class="main-option">
+            <div class="option-box">
+                <label for="save-id" id="isRemember" class="no-copy">
+                    <input type="checkbox" id="save-id" class="main-option-checkbox" name="saveId" />
+                    Remember Me
+                </label>
+            </div>
+            <span class="forgot-password no-copy">Forgot Password?</span>
+        </div>
+    </main>
+    <div class="button" onclick="performLogin()">LOGIN</div>
+    <div class="cancel-button button" onclick="cancelLogin()">CANCEL</div>
 
-<footer>
-
-</footer>
+</div>
 </body>
+
 </html>
