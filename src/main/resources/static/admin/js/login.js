@@ -1,5 +1,5 @@
 // 아이디 저장 checkbox
-const saveId = document.getElementById("saveId");
+const saveId = document.getElementById("save-id");
 
 if(localStorage.getItem("id") != null) {
     // 저장된 아이디가 있다면 아이디 저장 체크 O
@@ -51,4 +51,8 @@ function performLogin() {
 
 function clickSignUp() { // 회원가입 버튼 눌렸을 때
     window.location.href="/admins/sign-up";
+}
+
+function cancelLogin() {
+    window.location.href="/admins/"
 }
