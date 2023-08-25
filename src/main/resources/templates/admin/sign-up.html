@@ -1,39 +1,92 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Admin Sign-up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 회원가입</title>
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/admin/css/sign-up.css">
     <script defer src="/admin/js/sign-up.js" type="text/javascript"></script>
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<header>
+<div class="body-container">
+    <header>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+                    d="M6.93912 14.0327C6.7072 14.6562 6.51032 15.233 6.33421 15.8154C7.29345 15.1188 8.43544 14.6766 9.75193 14.512C12.2652 14.1979 14.4976 12.5384 15.6279 10.4535L14.1721 8.99878L15.5848 7.58407C15.9185 7.24993 16.2521 6.91603 16.5858 6.58237C17.0151 6.15301 17.5 5.35838 18.0129 4.21479C12.4197 5.08172 8.99484 8.50636 6.93912 14.0327ZM17 8.99728L18 9.99658C17 12.9966 14 15.9966 10 16.4966C7.33146 16.8301 5.66421 18.6635 4.99824 21.9966H3C4 15.9966 6 1.99658 21 1.99658C20.0009 4.99392 19.0018 6.99303 18.0027 7.99391C17.6662 8.33038 17.3331 8.66372 17 8.99728Z">
+            </path>
+        </svg>
+        <span class="header-title no-copy"> ADMIN SIGN-UP </span>
+    </header>
+    <main>
+        <div class="main-input">
+            <!-- ID INPUT BOX -->
+            <div class="input-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                            d="M11 14.0619V20H13V14.0619C16.9463 14.554 20 17.9204 20 22H4C4 17.9204 7.05369 14.554 11 14.0619ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13Z">
+                    </path>
+                </svg>
+                <input type="text" name="id" id="id" class="input-form" placeholder="ID" autocomplete="off" />
+                <span id="id-check">●</span>
+            </div>
 
-</header>
+            <!-- PASSWORD INPUT BOX -->
+            <div class="input-box">
+                <svg class="input-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                            d="M17 14H12.6586C11.8349 16.3304 9.61244 18 7 18C3.68629 18 1 15.3137 1 12C1 8.68629 3.68629 6 7 6C9.61244 6 11.8349 7.66962 12.6586 10H23V14H21V18H17V14ZM7 14C8.10457 14 9 13.1046 9 12C9 10.8954 8.10457 10 7 10C5.89543 10 5 10.8954 5 12C5 13.1046 5.89543 14 7 14Z">
+                    </path>
+                </svg>
+                <input type="password" id="password" class="input-form" name="password" placeholder="PASSWORD" />
+                <span id="password-check">●</span>
+            </div>
 
-<main>
-    <div class="formStyle">
-        <input type="text" id="adminId" name="id" placeholder="아이디를 입력하세요." />
-        <br />
-        <input type="password" id="adminPassword" name="password" placeholder="비밀번호를 입력하세요." />
-        <br />
-        <input type="password" id="adminPassword-check" name="password-check" placeholder="비밀번호를 한번 더 입력하세요." />
-        <br />
-        <input type="text" id="adminNickname" name="nickname" placeholder="닉네임을 입력하세요." />
-        <br />
-        <input type="email" id="adminEmail" name="email" placeholder="이메일을 입력하세요." />
-        <br />
-        <button class="Sign-up-button" onClick="performSignUp()">회원가입</button>
-        <button class="cancel-button" onClick="clickCancelButton()">취소</button>
-        <br />
-        <!-- Test용 데이터 채우기 TODO : 추후 삭제 예정       -->
-        <button onClick="dataSetting()">데이터 세팅!!</button>
-    </div>
-</main>
+            <!-- PASSWORD CHECK INPUT BOX -->
+            <div class="input-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                            d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z">
+                    </path>
+                </svg>
+                <input type="password" id="passwordCheck" class="input-form" name="password-check" placeholder="PASSWORD CHECK" />
+                <span id="passwordCheck-check">●</span>
+            </div>
 
-<footer>
+            <!-- NICKNAME INPUT BOX -->
+            <div class="input-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                            d="M10.5199 19.8634C10.5955 18.6615 10.8833 17.5172 11.3463 16.4676C9.81124 16.3252 8.41864 15.6867 7.33309 14.7151L8.66691 13.2248C9.55217 14.0172 10.7188 14.4978 12 14.4978C12.1763 14.4978 12.3501 14.4887 12.5211 14.471C14.227 12.2169 16.8661 10.7083 19.8634 10.5199C19.1692 6.80877 15.9126 4 12 4C7.58172 4 4 7.58172 4 12C4 15.9126 6.80877 19.1692 10.5199 19.8634ZM19.0233 12.636C15.7891 13.2396 13.2396 15.7891 12.636 19.0233L19.0233 12.636ZM22 12C22 12.1677 21.9959 12.3344 21.9877 12.5L12.5 21.9877C12.3344 21.9959 12.1677 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM10 10C10 10.8284 9.32843 11.5 8.5 11.5C7.67157 11.5 7 10.8284 7 10C7 9.17157 7.67157 8.5 8.5 8.5C9.32843 8.5 10 9.17157 10 10ZM17 10C17 10.8284 16.3284 11.5 15.5 11.5C14.6716 11.5 14 10.8284 14 10C14 9.17157 14.6716 8.5 15.5 8.5C16.3284 8.5 17 9.17157 17 10Z">
+                    </path>
+                </svg>
+                <input type="text" id="nickname" class="input-form" name="nickname" placeholder="NICKNAME" autocomplete="off" />
+                <span id="nickname-check">●</span>
+            </div>
 
-</footer>
-<script>
-</script>
+            <!-- EMAIL INPUT BOX -->
+            <div class="input-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                            d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z">
+                    </path>
+                </svg>
+                <input type="email" id="email" class="input-form" name="password" placeholder="EMAIL" autocomplete="off" />
+                <span id="email-check">●</span>
+            </div>
+
+        </div>
+    </main>
+    <div class="button" onclick="performSignUp()">SIGN UP</div>
+</div>
 </body>
+
 </html>
