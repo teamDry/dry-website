@@ -4,6 +4,10 @@
 
 <mapper namespace="org.dry.mapper.MemberMapper">
     <!--    SELECT    -->
+    <select id="selectMemberById" parameterType="org.dry.entity.Member" resultType="org.dry.entity.Member">
+        SELECT `id`, `password` FROM member WHERE id = #{id};
+    </select>
+
     <select id="selectMemberByIdAndPassword" parameterType="org.dry.vo.IdAndPassword" resultType="org.dry.entity.Member">
         SELECT * FROM member WHERE id = #{id} AND password = #{password}
     </select>
