@@ -2,6 +2,7 @@ package org.dry.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -27,18 +28,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/data") // 이 경로에 대해 CORS 정책 추가 TODO: 지금은 테스트용 api 경로임 추후 수정
-                .allowedOrigins("http://localhost:3000") // 허용할 origin 지정
-                .allowedMethods("GET", "POST", "PUT", "DELETE") // 허용할 HTTP메서드 지정
-                .allowedHeaders("*")    // 허용할 HTTP Header 지정 TODO: "*" 로하면 보안상 안좋으니 추후 수정
-                .allowCredentials(true); // cookie나 HTTP인증 허용 할건지
+        registry.addMapping("/api/admins/login")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("POST")
+                .allowedHeaders("*") // TODO: "*" 로하면 보안상 안좋으니 추후 수정
+                .allowCredentials(true);
 
         // CORS 정책 더 추가하려면 위 메서드를 아래에 또 추가하면됨
         // 이 외에도 옵션이 많은데 추후 필요하면 추가
-        registry.addMapping("api/newData")
-                .allowedOrigins("http://localhost:3000/main")
-                .allowedMethods("GET")
-                .allowedHeaders("*")
-                .allowCredentials(true);
+//        registry.addMapping("api/newData") // 이 경로에 대해 CORS 정책 추가
+//                .allowedOrigins("http://localhost:3000/main") // 허용할 origin 지정
+//                .allowedMethods("GET", "POST", "PUT", "DELETE") // 허용할 HTTP메서드 지정
+//                .allowedHeaders("*") // 허용할 HTTP Header 지정
+//                .allowCredentials(true); // cookie나 HTTP인증 허용 할건지
     }
 }
