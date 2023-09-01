@@ -19,21 +19,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(MockitoExtension.class)
 @DisplayName("MemberServiceTest")
 public class MemberServiceTest {
-//    @Mock       // 가짜 repository를 생성하여 jpa를 사용함
-//    private MemberRepository memberRepository;
-//    @Mock
-//    private MemberMapper memberMapper;
-//
-//    @InjectMocks    // 목객체를 주입받아 service를 테스트만을 위해 실행됨(Mockito가 자동으로 처리해줘서 편리하지만 목 객체와 테스트 클래스 간의 의존성이 커질수 있음)
-//    private MemberServiceImpl service;
-
-    // 생성자를 통한 주입방식
-//    private MemberServiceImpl service;
-
-//    @BeforeEach
-//    public void setUp() {
-//        service = new MemberServiceImpl(memberRepository);
-//    }
 
     private final MemberRepository memberRepository;
     private final MemberMapper memberMapper;
@@ -64,7 +49,7 @@ public class MemberServiceTest {
 
     @DisplayName("MemberService login Test")
     @Test
-    void given_when_then() {
+    void givenTestData_whenAccessService_thenReturnObjectIsNotNull() {
         // given
         IdAndPassword idAndPassword = new IdAndPassword("test", "1234");
         // mapper 에 가짜데이터로 접속 되는지 여부만 따져 그에 반환 값을 Member 타입으로 초기화 하여 설정

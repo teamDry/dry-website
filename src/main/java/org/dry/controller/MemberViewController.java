@@ -13,9 +13,9 @@ public class MemberViewController {
         return "member/login";
     }
 
-    @GetMapping("/loginSuccess")
-    public String loginSuccess() {
-        return "member/loginSuccess";
+    @GetMapping("/index")
+    public String index() {
+        return "member/index";
     }
 
     @GetMapping("/sign-up")

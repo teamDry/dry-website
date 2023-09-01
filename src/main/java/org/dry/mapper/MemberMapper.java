@@ -6,6 +6,7 @@ import org.dry.vo.IdAndPassword;
 
 @Mapper
 public interface MemberMapper {
+
     Member selectMemberByIdAndPassword(IdAndPassword memberIdAndPassword);
     Integer insertMember(Member member);
     Integer count();

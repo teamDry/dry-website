@@ -27,16 +27,4 @@ public class MemberRestController {
         log.debug("return newMember" + newMember);
         return newMember;
     }
-
-    @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody IdAndPassword idAndPassword) {
-        log.debug("return idAndPassword" + idAndPassword);
-        Member member = service.login(idAndPassword);
-        if(member != null) {
-            return ResponseEntity.ok(member);
-        }else {
-            return ResponseEntity.ok("{}");
-        }
-    }
-
 }
