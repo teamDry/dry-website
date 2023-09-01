@@ -21,6 +21,7 @@ public class CustomUserDetails implements UserDetails {
         this.member = member;
     }
 
+    // 권한설정(팀 회의 후 추가예정)
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority("Level" + member.getLevel()));
