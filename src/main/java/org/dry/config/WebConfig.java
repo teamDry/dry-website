@@ -26,14 +26,27 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+    public final String LOCAL_HOST = "http://localhost:3000";
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/admins/login")
-                .allowedOrigins("http://localhost:3000")
+                .allowedOrigins(LOCAL_HOST)
                 .allowedMethods("POST")
                 .allowedHeaders("*") // TODO: "*" 로하면 보안상 안좋으니 추후 수정
                 .allowCredentials(true);
 
+        registry.addMapping("/api/admins/*/check")
+                .allowedOrigins(LOCAL_HOST)
+                .allowedMethods("GET")
+                .allowedHeaders("*")
+                .allowCredentials(true);
+
+        registry.addMapping("/api/admins/sign-up")
+                .allowedOrigins(LOCAL_HOST)
+                .allowedMethods("POST")
+                .allowedHeaders("*")
+                .allowCredentials(true);
         // CORS 정책 더 추가하려면 위 메서드를 아래에 또 추가하면됨
         // 이 외에도 옵션이 많은데 추후 필요하면 추가
 //        registry.addMapping("api/newData") // 이 경로에 대해 CORS 정책 추가
